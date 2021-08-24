@@ -1,3 +1,1 @@
-# LeetCode Problems
-
-Algorithm practice problems from leetcode.com
+# Algorithm practice problems
