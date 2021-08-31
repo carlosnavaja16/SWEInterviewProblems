@@ -20,13 +20,3 @@ def canConstruct(target: str, wordBank: list[str]) -> bool:
 
 print(canConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef",["e","ee","eee","eeee","eeeeeeee"]))
 
-""""
-target = "abcdef"
-
-word = "zzz"
-
-print(target.index(word))
-print(target.removeprefix(word))
-
-target.__contains__()
-"""
