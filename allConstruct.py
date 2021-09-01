@@ -14,6 +14,7 @@ memo = {}
 
 
 def allConstruct(target, wordBank):
+    if target in memo: return memo[target]
     if target == "": return [[]]
 
     combination = []
@@ -26,6 +27,8 @@ def allConstruct(target, wordBank):
                 for r in result:
                     r.insert(0,word)
                     combination.append(r)
+
+    memo[target] = combination;                
     return combination
 
 print(allConstruct("purple",["purp", "p","ur", "le", "purpl"]))
