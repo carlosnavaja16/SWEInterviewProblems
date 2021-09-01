@@ -13,30 +13,33 @@ You must write an algorithm that runs in O(log n) time.
 """
 
 
-def findMinWrapper(self,nums:list[int]):
+def findMinWrapper(nums:list[int]):
     print("Input: nums = "+ nums.__str__())
     print("Output: " + str(findMin(nums)))
 
 
-def findMin(self,nums: list[int]) -> int:
+def findMin(nums: list[int]) -> int:
+
+    numsLen = len(nums)
+
     #base case #1: len(nums) is 1
-    if len(nums) == 1: return nums[0]
+    if numsLen == 1: return nums[0]
 
     #base case #3: if len(nums) is 2 then return lowest n
-    if(len(nums) == 2): 
+    if(numsLen == 2): 
         print("len was 2")
         if nums[0] < nums[1]:
             return nums[0]
         else: return nums[1]
 
     #base case #3: array is not rotated
-    if nums[0] < nums[len(nums)-1]: return nums[0]
+    if nums[0] < nums[numsLen-1]: return nums[0]
 
     #check if len(nums) is even or odd
-    halfLen = int(len(nums)/2)
+    halfLen = int(numsLen/2)
 
     #len(nums) is even
-    if len(nums)%2 == 0:
+    if numsLen%2 == 0:
         print("len(nums) is even")
         halfLen -= 1
 
@@ -49,8 +52,8 @@ def findMin(self,nums: list[int]) -> int:
             print("returning with nums from " + str(nums[0:halfLen+1]))
             return findMin(nums[0:halfLen + 1])
         else:
-            print("returning with nums from " + str(halfLen+1) +":"+str(len(nums)))
-            return findMin(nums[halfLen+1:len(nums)])
+            print("returning with nums from " + str(halfLen+1) +":"+str(numsLen))
+            return findMin(nums[halfLen+1:numsLen])
     #odd
     else:
         print("len(nums) is odd")
@@ -65,8 +68,8 @@ def findMin(self,nums: list[int]) -> int:
             print("returning with nums from " + str(nums[0:halfLen]))
             return findMin(nums[0:halfLen + 1])
         else:
-            print("returning with nums from " + str(halfLen+1) +":"+str(len(nums)))
-            return findMin(nums[halfLen+1:len(nums)])
+            print("returning with nums from " + str(halfLen+1) +":"+str(numsLen))
+            return findMin(nums[halfLen+1:numsLen])
 
 print(findMinWrapper([3,4,5,1,2]))
 print(findMinWrapper([4,5,6,7,0,1,2]))
