@@ -10,54 +10,39 @@ leading zero, except the number 0 itself.
 
 """
 
-
-#Definition for singly-linked list.
 class ListNode:
-   def __init__(self, val=0, next=None):
-         self.val = val
-         self.next = next
-         
+    def __init__(self, val=0, next=None):         
+        self.val = val
+        self.next = next
+
 class Solution:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         
-        list1 = []
-        list2 = []
-        
+        lAnswer = lDummy = ListNode(0)
+        carry = 0
+
         while True:
-            list1.append(l1.val)
-            if(l1.next):
+            
+            sum = 0
+            
+            if l1 != None:
+                sum += l1.val
                 l1 = l1.next
-            else:
-                break
-        
-        while True:
-            list2.append(l2.val)
-            if(l2.next):
+            
+            if l2 != None:
+                sum += l2.val
                 l2 = l2.next
-            else:
+            
+            sum += carry
+            carry = int(sum/10)
+            lDummy.val = sum%10
+
+            if l1!=None or l2!=None or carry != 0:
+                lDummy.next = ListNode(0)
+                lDummy = lDummy.next
+            else: 
                 break
-        
-        num1 = 0
-        num2 = 0
-        
-        for index, value in enumerate(list1):
-            num1 += value*(10**index)
-            
-        for index, value in enumerate(list2):
-            num2 += value*(10**index)
-            
-        print(num1)
-        print(num2)
-        
-        numAnswer = str(num1+num2)
-        
-        lAnswer = ListNode()
-        lPointer = ref(lAnswer)
-        
-        for n in range(len(numAnswer)-1, -1,-1):
-            print(int(numAnswer[n]))
-            lPointer.value = int(numAnswer[n])
-            lPointer.next = ListNode()
-            lPointer = lPointer.next     
-        
+
         return lAnswer
+
+
