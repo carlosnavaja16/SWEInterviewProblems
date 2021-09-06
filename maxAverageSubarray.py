@@ -7,7 +7,7 @@ has the maximum average value and return this value. Any
 answer with a calculation error less than 10-5 will be accepted.
 """
 class Solution:
-    def findMaxAverage(self, nums: List[int], k: int) -> float:
+    def findMaxAverage(self, nums: list[int], k: int) -> float:
         
         currSum = maxSum = sum(nums[0:k])
         numsLen = len(nums)
